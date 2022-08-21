@@ -1,5 +1,5 @@
 #pragma once
 
-namespace playground {
+namespace imagine {
 int example_plot();
 }

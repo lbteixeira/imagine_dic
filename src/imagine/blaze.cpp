@@ -4,7 +4,7 @@
 #define BLAZE_DEFAULT_TRANSPOSE_FLAG blaze::columnVector
 #define BLAZE_USE_VECTORIZATION 1
 
-#include "playground/blaze.hpp"
+#include "imagine/blaze.hpp"
 
 #include "blaze/math/StaticVector.h"
 

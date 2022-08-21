@@ -1,7 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "playground/blaze.hpp"
-#include "playground/eigen.hpp"
+#include "imagine/blaze.hpp"
+#include "imagine/eigen.hpp"
 
 TEST_CASE("Test case 1", "[tag1]") {
   SECTION("First section") {

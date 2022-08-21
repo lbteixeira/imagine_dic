@@ -1,4 +1,4 @@
-#include "playground/eigen.hpp"
+#include "imagine/eigen.hpp"
 
 #include <iostream>
 

@@ -3,7 +3,7 @@
 # run the tests from the root directory.
 cmake_minimum_required(VERSION 3.16.0)
 
-project(playground VERSION 0.0.1 LANGUAGES CXX)
+project(imagine VERSION 0.0.1 LANGUAGES CXX)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -16,6 +16,6 @@ include(NoInSourceBuilds)
 
 add_subdirectory(src)
 
-if(PLAYGROUND_BUILD_TESTS)
+if(IMAGINE_BUILD_TESTS)
   add_subdirectory(tests)
 endif()

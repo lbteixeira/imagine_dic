@@ -4,7 +4,7 @@
 
 #include <memory>
 
-namespace playground_app {
+namespace imagine_app {
 class gui_manager {
  public:
   gui_manager(int width, int height, const char* title);
@@ -18,4 +18,4 @@ class gui_manager {
   const int _height;
   const char* _title;
 };
-}  // namespace playground_app
+}  // namespace imagine_app

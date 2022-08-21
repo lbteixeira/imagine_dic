@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-namespace playground_app {
+namespace imagine_app {
 
 gui_manager::gui_manager(int width, int height, const char* title) : _width(width), _height(height), _title(title) {
   if (!glfwInit()) {
@@ -32,4 +32,4 @@ void gui_manager::window_loop() {
   glfwTerminate();
 }
 
-}  // namespace playground_app
+}  // namespace imagine_app

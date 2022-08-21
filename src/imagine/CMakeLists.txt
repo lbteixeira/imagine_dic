@@ -23,33 +23,33 @@ set(PROJECT_FILES
 )
 
 # Generate an obj file, that can be used to build static and shared libraries
-add_library(playground_obj OBJECT ${PROJECT_FILES})
-target_compile_options(playground_obj PUBLIC ${EXTRA_COMPILATION_FLAGS})
+add_library(imagine_obj OBJECT ${PROJECT_FILES})
+target_compile_options(imagine_obj PUBLIC ${EXTRA_COMPILATION_FLAGS})
 
 # Runs Cppcheck on the obj library if in Debug mode
 if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
-  AddCppCheck(playground_obj)
+  AddCppCheck(imagine_obj)
 endif()
 
 # Linking the dependencies to the obj library
-target_link_libraries(playground_obj PRIVATE
+target_link_libraries(imagine_obj PRIVATE
   ${EIGEN_TARGET}
   ${BLAZE_TARGET}
   ${MATPLOT_TARGET}
   ${OpenCV_LIBS}
 )
 
-target_include_directories(playground_obj PUBLIC
+target_include_directories(imagine_obj PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 # Create a static library target and link the obj into it
-add_library(playground_static STATIC)
-target_link_libraries(playground_static playground_obj)
+add_library(imagine_static STATIC)
+target_link_libraries(imagine_static imagine_obj)
 
 # Formats the source files according to the style defined by .clang-format
-Format(playground_static .)
+Format(imagine_static .)
 
 # Create the documentation target
-Doxygen(playground_static src/CMakeLists.txt)
+Doxygen(imagine_static src/CMakeLists.txt)
 

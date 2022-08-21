@@ -1,10 +1,10 @@
-#include "playground/matplot.hpp"
+#include "imagine/matplot.hpp"
 
 #include <matplot/matplot.h>
 
 #include <cmath>
 
-namespace playground {
+namespace imagine {
 int example_plot() {
   std::vector<double> x = matplot::linspace(0, 2 * matplot::pi);
   std::vector<double> y = matplot::transform(x, [](auto x) { return sin(x); });
@@ -18,4 +18,4 @@ int example_plot() {
   matplot::show();
   return 0;
 }
-}  // namespace playground
+}  // namespace imagine

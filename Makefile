@@ -14,25 +14,25 @@ release:
 
 .PHONY: test
 test:
-		cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 -D PLAYGROUND_BUILD_TESTS="ON" -D CMAKE_BUILD_TYPE="Debug" -S . -B build/debug
+		cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 -D IMAGINE_BUILD_TESTS="ON" -D CMAKE_BUILD_TYPE="Debug" -S . -B build/debug
 		cmake --build ./build/debug
-		ctest --test-dir ./build/debug/tests/playground/ --output-on-failure
+		ctest --test-dir ./build/debug/tests/imagine/ --output-on-failure
 
 .PHONY: valgrind
 valgrind: test
-		cmake --build ./build/debug -t memcheck-playground_tests
+		cmake --build ./build/debug -t memcheck-imagine_tests
 
 .PHONY: valgrind-app
 valgrind-app: debug
-		cmake --build ./build/debug -t memcheck-playground_app
+		cmake --build ./build/debug -t memcheck-imagine_app
 
 .PHONY: doc-lib
 doc-lib: debug
-		cmake --build ./build/debug -t doxygen-playground_static
+		cmake --build ./build/debug -t doxygen-imagine_static
 
 .PHONY: doc-app
 doc-app: debug
-		cmake --build ./build/debug -t doxygen-playground_app
+		cmake --build ./build/debug -t doxygen-imagine_app
 
 .PHONY: clean
 clean:
