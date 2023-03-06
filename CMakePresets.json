@@ -1,0 +1,139 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "ld",
+      "displayName": "Linux Debug (dev)",
+      "description": "Debug configuration for Linux",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+        "PLAYGROUND_BUILD_TESTS": "ON",
+        "CMAKE_TOOLCHAIN_FILE": "external/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "mingw-dev",
+      "displayName": "MINGW: Windows Debug (dev)",
+      "description": "Debug configuration for Windows using MINGW",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+        "PLAYGROUND_BUILD_TESTS": "ON",
+        "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
+        "VCPKG_DEFAULT_HOST_TRIPLET": "x64-mingw-dynamic",
+        "CMAKE_TOOLCHAIN_FILE": "external/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "msvc-dev",
+      "displayName": "MSVC: Windows Debug (dev)",
+      "description": "Debug configuration for Windows using MSVC",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+        "PLAYGROUND_BUILD_TESTS": "ON",
+        "CMAKE_TOOLCHAIN_FILE": "external/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "ld-doc",
+      "displayName": "Linux Debug (dev) with Doxygen documentation",
+      "description": "Debug configuration for Linux with Doxygen documentation",
+      "inherits": "ld",
+      "cacheVariables": {
+        "PLAYGROUND_BUILD_DOC": "ON"
+      }
+    },
+    {
+      "name": "lr",
+      "displayName": "Linux Release",
+      "description": "Release configuration for Linux",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "ld",
+      "displayName": "Linux Debug (dev)",
+      "description": "Debug build for Linux",
+      "configurePreset": "ld",
+      "jobs": 4
+    },
+    {
+      "name": "mingw-dev",
+      "displayName": "MINGW: Windows Debug (dev)",
+      "description": "Debug configuration for Windows using MINGW",
+      "configurePreset": "mingw-dev",
+      "jobs": 4
+    },
+    {
+      "name": "msvc-dev",
+      "displayName": "MSVC: Windows Debug (dev)",
+      "description": "Debug build for Windows using MSVC",
+      "configurePreset": "msvc-dev",
+      "jobs": 4
+    },
+    {
+      "name": "lr",
+      "displayName": "Linux Release",
+      "description": "Release build for Linux",
+      "configurePreset": "ld",
+      "jobs": 4
+    },
+    {
+      "name": "valgrind",
+      "displayName": "Valgrind",
+      "description": "Runs valgrind in the tests",
+      "configurePreset": "ld",
+      "targets": "memcheck-playground_tests"
+    },
+    {
+      "name": "valgrind-app",
+      "displayName": "Valgrind",
+      "description": "Runs valgrind in the tests",
+      "configurePreset": "ld",
+      "targets": "memcheck-playground_tests"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "ld",
+      "configurePreset": "ld",
+      "output": {"outputOnFailure": true},
+      "execution": {
+      }
+    },
+    {
+      "name": "msvc",
+      "configurePreset": "msvc-dev",
+      "output": {"outputOnFailure": true},
+      "execution": {
+      }
+    },
+    {
+      "name": "mingw",
+      "configurePreset": "mingw-dev",
+      "output": {"outputOnFailure": true},
+      "execution": {
+      }
+    }
+  ]
+}
